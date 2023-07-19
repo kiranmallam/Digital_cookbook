@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Digital CookBook</title>
+  <!-- bootstrap links -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+  <!-- Awesome Fonts Icons link -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/all.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Ubuntu:wght@500&display=swap"
+    rel="stylesheet" />
+
+  <!-- StyleSheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      font-family: 'montserrat';
+    }
+
+    #title {
+      background-color: #fcf8f8;
+      color: rgb(11, 10, 10);
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: "Montserrat";
+      font-size: 3.5rem;
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-family: "Montserrat";
+      font-size: 3rem;
+      color: #fff;
+    }
+
+    p {
+      color: black;
+    }
+
+    .container-fluid {
+      padding: 0 15% 7%;
+    }
+
+    .iphone {
+      position: absolute;
+      width: 330px;
+      right: 15%;
+      height: 550px;
+      border-radius: 25px;
+      box-shadow: 2px 2px 25px rgb(50, 49, 49);
+      margin-bottom: 4px;
+    }
+
+    /* Navigation Bar */
+
+    .navbar-brand {
+      font-family: "Ubuntu";
+      font-size: 2rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    .navbar {
+      padding-bottom: 1.5rem;
+      color: black;
+      background-color: #fcf8f8;
+      margin-bottom: 30px;
+    }
+
+    .nav-item {
+      padding: 0 18px;
+    }
+
+    .nav-link {
+      font-size: 1.2rem;
+      color: black;
+    }
+
+    .stacking {
+      position: relative;
+    }
+
+    @media (max-width:990px) {
+      .iphone {
+        position: static;
+        transform: rotate(0);
+        margin-top: 1.5rem;
+      }
+
+      #title {
+        text-align: center;
+      }
+    }
+
+    .footer-btn {
+      transition: .5s;
+    }
+
+    .footer-btn:hover {
+      box-shadow: 1px 1px 10px black;
+    }
+
+    #footer {
+      text-align: center;
+      padding: 5%;
+      z-index: -1;
+      background-color: #fcf8f8;
+    }
+
+    .footer-icon {
+      padding: 10px 15px;
+    }
+
+    .info {
+      box-sizing: border-box;
+      /* box-shadow: 2px 2px 25px rgb(78, 77, 77); */
+      border-radius: 25px;
+      padding: 4%;
+      text-align: center;
+
+    }
+
+    .image {
+      box-sizing: border-box;
+      border-radius: 25px;
+      box-shadow: 5px 5px 10px rgb(101, 99, 99);
+      margin-bottom: 30px;
+      width: 300px;
+      height: 350px;
+    }
+
+    .search {
+      border-radius: 20px;
+      border: 1px solid black;
+    }
+
+    .form1 input {
+      border-radius: 10px;
+      border: 2px black solid;
+      line-height: 1.5rem;
+    }
+
+    .form1 {
+      line-height: 3;
+    }
+
+    .info a {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 25px;
+    }
+
+    .ingredient-content {
+      padding: 3% 10%;
+      border-radius: 10px;
+      box-shadow: 1px 1px 10px black;
+      margin-bottom:30px;
+      background-color:#EDE4E0;
+    }
+
+    .ingredient-content h1 {
+      text-align: center;
+      
+    }
+
+    .main {
+      padding: 10% 20%;
+    }
+
+    .head {
+      text-align: center;
+    }
+
+    .search,
+    .search-box {
+      text-align: center;
+    }
+    .back{
+      padding-bottom:20px;
+    }
+    .nav-div{
+      padding-bottom:0;
+    }
+    .flex-body{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Title -->
+  <div class="stacking">
+    <section id="title">
+      <div class="container-fluid nav-div">
+        <!-- Nav Bar -->
+
+        <nav class="navbar navbar-expand-lg sticky-top back">
+          <a class="navbar-brand" href="/">CookBook content</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <form action="/search" method="post" class="search-box">
+                  <select name="search">
+                    <option value="none">Select Here</option>
+                    {% for i in res%}
+                    <option value="{{i['name']}}">{{i['name']}}</option>
+                    {%endfor%}
+                  </select>
+                  <!-- <input type="text" class="nav-link search" placeholder="Search" name="search"><br> -->
+                  <input class="search btn btn-lg btn-outline-danger" type="submit" value="Search">
+                </form>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin">User Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#cta"></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </section>
+  </div>
+  <div class="container">
+    
+    <div class="container ingredient-content">
+      <div class="row">
+        <h1 style="text-decoration:underline;">Recipe Details</h1>
+        <div class="col-lg-4 flex-body">
+          <h1>{{m}}</h1>
+        </div>
+        <div class="col-lg-6">
+          <h3 style="color:red">Ingredients :</h3>
+          <p>{{n}}</p>
+          <h3 style="color:red">Procedure :</h3>
+          <p>{{p}} </p>
+        </div>
+        
+      </div>
+
+    </div>
+</body>
+
+</html>
